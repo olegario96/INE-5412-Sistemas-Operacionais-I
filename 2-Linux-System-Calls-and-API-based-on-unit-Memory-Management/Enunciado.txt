@@ -1,0 +1,43 @@
+Esta é a Implementação Computacional 2. Ela deve ser realizada de forma individual e exclusivamente pelo ambiente Moodle, que
+permite a execução do aplicativo a ser desenvolvido. O restante deste texto descreve o que deve ser feito nesta implementação
+computacional.
+
+De forma geral, para esta atividade prática você deve implementar um aplicativo que tenha dois processos, o pai (main) e um
+novo processo-filho. Quando o processo-filho executa, ele deve criar um segmento de memória compartilhada do tamanho de uma
+mensagem específica e escrever uma mensagem nessa memória compartilhada, e então terminar. Quando o process-pai executar, ele
+deve primeiro esperar até que o processo-filho tenha terminado e então deve obter acesso ao segmento de memória compartilhada
+criado pelo filho e ler a mensagem dessa memória.
+
+Mais especificamente, ao criar o objeto compartilhado, o processo-filho deve garantir que as flags indiquem que ele seja
+criado (já que ele não existe ainda), que deve rertornar erro caso um objeto com aquele nome já exista e deve ser criado para
+leitura e para escrita. O modo de abertura (mode_t) deve permitir que ele seja lido, escrito e executado pelo dono e pelo
+grupo.  Ao mapear o objeto compartilhado na memória, o processo-filho deve especificar proteção para leitura e escrita da
+página na memória, e as flags devem especificar que a memória mapeada deve ser compartilhada. Já o processo-pai, ao criar
+(abrir) o objeto compartilhado, deve garantir que as flags indiquem que o objeto deve ser aberto com acesso de leitura e
+escrita (o objeto já deve existir, pois foi criado pelo filho). Todo o resto deve ser igual ao processo-filho.
+
+Para implementar esse aplicativo, você vai precisar das seguintes funções que dão acesso a chamadas de sistema do SO: fork,
+getpid, waitpid, shmget, ftruncate, mmap, shmdt, e várias constantes, principalmente as flags para abertura/criação do objeto
+compartilhado e mapeamento na memória, como PROT_READ, O_RDWR, S_IRWXU,MAP_SHARED, etc. Pesquise no material disponibilizado
+(ou na internet) como essas funções operam e implemente o aplicativo solicitado, completando a estrutura básica do código que
+já é fornecida em main.cpp. A documentação do código deve seguir o padrão doxigen ou outro styleguide, e deve aprentar a
+documentação completa da chamada de sistema do SO, seus parâmetros, flags, retornos, etc, demonstrando que o acadêmico
+pesquisou sobre a totalidade de suas funções. Não é permitido que você modifique a estrutura do código e principalmente as
+saídas que o sistema gera (cout), pois as saídas geradas pelo programa são base para sua correção automatizada. Se você criar
+ou modificar "couts", seu programa não irá passar nos testes e receberá nota zero.
+
+Para pensar e responder junto ao código:
+
+1) As funções usadas criam um segmento de memória de tamanho especificado (truncado) e depois há proteção de páginas. Qual é
+o modelo de gerenciamento de memória usado?
+
+2) Esse mecanismo pode ser usado para implementar sincronização de processos, como uma alternativa aos semáforos?
+
+3) Os processos que se comunicam via memória compartilhada precisam estar no mesmo arquivo executável como nesse exemplo ou
+eles podem estar em arquivos separados?
+
+4) Eles precisam estar executando no mesmo processador ou podem estar executando em processadores diferentes?
+
+5) Eles precisam estar executando no mesmo computador ou podem estar executando em computadores diferentes?
+
+6) Por fim, se o objetivo é comunicar dois processos no mesmo computador, tente fazer o mesmo usando pipes.
