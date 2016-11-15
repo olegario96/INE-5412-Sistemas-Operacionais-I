@@ -1,0 +1,32 @@
+Esta é a Implementação Computacional 4. Ela deve ser realizada de forma individual e exclusivamente pelo ambiente Moodle, que
+permite a execução do aplicativo a ser desenvolvido. O restante deste texto descreve o que deve ser feito nesta implementação
+computacional.
+
+De forma geral, para esta atividade prática você deve implementar um aplicativo que implemente uma solução para o problema de
+programação concorrente da brincadeira das crianças.
+
+Mais especificamente, suponha o seguinte problema: Imagine 7 crianças, que estão, a princípio, quietas. Três delas
+inicialmente possuem uma bola e as outras quatro, não. De repente, sentem vontade de brincar com uma bola. Com esse desejo
+incontrolável, as que já estão com a bola simplesmente brincam. As que não têm bola, correm ao cesto de bolas, que está
+inicialmente vazio e que suporta na verdade apenas três bolas (a versão original do problema informa que no cesto cabe uma
+única bola). Se o cesto estiver cheio, uma criança pega a bola e vai brincar feliz. Se o cesto estiver vazio, ela fica
+esperando até outra criança coloque uma bola no cesto. Quando uma criança termina de brincar, ela tem que colocar a bola no
+cesto, mas se o cesto já estiver cheio, ela segura a bola até que outra criança retire a bola que já está no cesto, e então
+solta sua bola no cesto e volta a ficar quieta. Implemente uma solução para esse problema sincronizando as threads "child"
+usando semáforos do padrão posix.
+
+Para implementar esse aplciativo, você vai precisar das seguintes funções que dão acesso a chamadas de sistema do SO:
+pthread_create, pthread_join, pthread_exit, sem_init, sem_wait e sem_post. A documentação do código deve seguir o padrão
+doxigen ou outro styleguide, e deve aprentar a documentação completa da chamada de sistema do SO, seus parâmetros, flags,
+retornos, etc, demonstrando que o acadêmico pesquisou sobre a totalidade de suas funções. Não é permitido que você modifique
+a estrutura do código e principalmente as saídas que o sistema gera (cout), pois as saídas geradas pelo programa são base
+para sua correção automatizada. Se você criar ou modificar "couts", seu programa não irá passar nos testes e receberá nota
+zero.
+
+Para pensar e para responder no código:
+
+1) Os semáforos podem ser variáveis locais? Todas as threads "child" terminam? Justifique.
+
+2) E se no cesto couber uma única bola, como na versão original do problema? Há algum erro de programação para que as threads
+não terminem? O que poderia ser feito para detectar que um evento nunca ocorrerá e fazer com que o programa finalize com
+sucesso, encerrando todas suas threads?
