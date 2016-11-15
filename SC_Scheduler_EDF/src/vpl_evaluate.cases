@@ -1,0 +1,44 @@
+case=1
+input=1
+output=/(.)+Process 1 created!(.)+/
+grade reduction=10%
+
+case=2
+input=2
+output=/(.)+Thread 3 created!(.)+/
+grade reduction=10%
+
+case=3
+input=3
+output=/(.)+Thread 5 executed yield!(.)+/
+grade reduction=10%
+
+case=4
+input=4
+output=/(.)+Thread 7 executed join!(.)+/
+grade reduction=10%
+
+case=5
+input=5
+output=/(.)+Process 5 executed exit!(.)+/
+grade reduction=10%
+
+case=6
+input=6
+output=/(.)+Thread 14 executed exit!(.)+/
+grade reduction=10%
+
+case=7
+input=7
+output=/(.)+Thread 17 executed sleep!(.)+/
+grade reduction=10%
+
+case=8
+input=8
+output=/(.)+Thread 19 executed wakeup!(.)+/
+grade reduction=10%
+
+case=9
+input=9
+output=/(.)+Thread 22 executed wakeup!(.)+/
+grade reduction=20%
