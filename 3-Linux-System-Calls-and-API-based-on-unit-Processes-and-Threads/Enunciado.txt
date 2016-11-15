@@ -1,0 +1,26 @@
+Esta atividade deve ser realizada de forma individual e exclusivamente pelo ambiente Moodle, que permite a execução do
+aplicativo a ser desenvolvido. O restante deste texto descreve o que deve ser feito nesta implementação computacional.
+
+De forma geral, para esta atividade prática você deve implementar um aplicativo que crie duas threads. Uma delas deve
+incrementar uma variável global x 100 vezes, enquanto a outra deve decrementar essa mesma variável 100 vezes. No final, o valor
+da variável deve ser apresentada. Como essa variável corresponde a uma região crítica, deve-se garantir que não ocorrerá o
+problema da condição de corrida.
+
+Mais especificamente, inicializa-se uma variável global x com 0. Deve-se declarar as threads e o mutex que fará a
+sincronização. Deve-se então criar as duas threads (uma para incremento e outra para decremento), aguardar que ambas executem
+até terminar, destruir o mutex e apresentar o novo valor da variável x.
+
+Para implementar esse aplciativo, você vai precisar das seguintes funções que dão acesso a chamadas de sistema do SO:
+pthread_mutex_lock, pthread_mutex_unlock, pthread_mutex_init, pthread_create, pthread_join, pthread_mutex_destroy. Você também
+usará os tipos pthread_t e pthread_mutex_t. Pesquise no material disponibilizado (ou na internet) como essas funções operam e
+implemente o aplicativo solicitado, completando a estrutura básica do código que já é fornecida em main.cpp. A documentação do
+código deve seguir o padrão doxigen ou outro styleguide, e deve aprentar a documentação completa da chamada de sistema do SO,
+seus parâmetros, flags, retornos, etc, demonstrando que o acadêmico pesquisou sobre a totalidade de suas funções. Não é
+permitido que você modifique a estrutura do código e principalmente as saídas que o sistema gera (cout), pois as saídas geradas
+pelo programa são base para sua correção automatizada. Se você criar ou modificar "couts", seu programa não irá passar nos
+testes e receberá nota zero.
+
+Para pensar e responder junto ao código: Na implementação computacional  da Unidade 1 o que acontecia com a variável global
+count quando ela era incrementada pelos diferentes processos? O mesmo vai acontecer agora quando a variável global x for
+incrementada e decrementada pelos difereeentes threads? Qual é o valor esperado para a variável x após o término do aplicativo?
+Se não houver mutex, qual será o valor final da variável global x (ou sua distribuição de probabilidade)?
