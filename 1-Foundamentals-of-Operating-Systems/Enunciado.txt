@@ -1,0 +1,30 @@
+De forma geral, para esta atividade prática você deve implementar um aplicativo que crie cinco processos-filhos que
+executam concorrentemente e, quando todos terminarem, o processo-pai termina também, apresentando a soma dos resultados
+(status) dos processos-filhos.
+
+Mais especficamente, este aplicativo deve ter uma variável global count, inicializada com 0. O processo-pai deve criar 5
+processos-filhos. Quando um processo-filho estiver executando, ele deve incrementar a variável count, dormir por 1 segundo
+e depois retornar o valor atualizado de count. Após os processos-filhos terem sido criados, o processo-pai deve esperar que
+cada processo-filho termine. Quando isso contecer, ele deve acumular o valor de retorno de cada filho numa variável sum.
+Quando todos os filhos terminarem, o processo-pai mostra o valor de sum e termina também.
+
+Para implementar esse aplicativo, você vai precisar das seguintes funções que dão acesso a chamadas de sistema do SO: fork,
+getpid, sleep, waitpid, e das constantes ECHILD e WEXITSTATUS.  Pesquise no material disponibilizado (ou na internet) como
+essas funções operam e implemente o aplicativo solicitado, completando a estrutura básica do código que já é fornecida em
+main.cpp. A documentação do código deve seguir o padrão doxigen ou outro styleguide, e deve apresentar a documentação
+completa da chamada de sistema do SO, seus parâmetros, flags, retornos, etc, demonstrando que o acadêmico pesquisou sobre a
+totalidade de suas funções. Você deve completar a estrutura fornecida, sem modificá-la. Não é permitido que você modifique
+a estrutura do código e principalmente as saídas que o sistema gera (cout), pois as saídas geradas pelo programa são base
+para sua correção automatizada. Se você criar ou modificar "couts", seu programa não irá passar nos testes e receberá nota
+zero.
+
+Para pensar e para responder junto ao código, pois esse conhecimento pode ser verificado numa prova escrita:
+
+1) Há uma variável global count acessível a todos os processos e que é inicializada com 0. Cinco processos são criados e
+cada um incrementa o valor atual dessa variável, retornando o valor incrementado. Se somarmos todos os valores retornados,
+quanto você acha que será apresentado?
+
+2) Existe possibilidade de condição de corrida neste código?
+
+3) Se você mandar apresentar a tela o ponteiro da variável "count" antes do fork e então depois do fork, quando um novo
+processo é criado, o que você espera ver nos endereços? Eles serão iguais ou diferentes? Por quê?
