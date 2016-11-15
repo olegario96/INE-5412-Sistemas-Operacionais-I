@@ -1,0 +1,7 @@
+To run the simulator, download the source files and execute the command on the terminal:
+
+./vpl_run.sh
+
+After generate the executable, just follow this command:
+
+./vpl_execution
